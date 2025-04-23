@@ -22,12 +22,15 @@ until mysqladmin ping --silent; do
 done
 
 # Create DB and user
-mariadb -u root << EOF
+mysql -u root << EOF
 CREATE DATABASE IF NOT EXISTS \`${MDB_NAME}\`;
 CREATE USER IF NOT EXISTS '${MDB_USER}'@'%' IDENTIFIED BY '${MDB_PWD}';
+CREATE USER IF NOT EXISTS '${MDB_USER}'@'localhost' IDENTIFIED BY '${MDB_PWD}';
 GRANT ALL PRIVILEGES ON \`${MDB_NAME}\`.* TO '${MDB_USER}'@'%';
+GRANT ALL PRIVILEGES ON \`${MDB_NAME}\`.* TO '${MDB_USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
+
 
 mysqladmin -u root shutdown || kill "$pid"
 

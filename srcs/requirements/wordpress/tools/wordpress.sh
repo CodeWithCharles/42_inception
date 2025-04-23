@@ -27,8 +27,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 					--user_pass=$WP_USER_PWD		\
 					--allow-root
 
-	wp option update home 'https://cpoulain.42.fr' --allow-root
-	wp option update siteurl 'https://cpoulain.42.fr' --allow-root
+	wp option update home $WP_URL --allow-root
+	wp option update siteurl $WP_URL --allow-root
 
 else
 	echo "WordPress is already configured."

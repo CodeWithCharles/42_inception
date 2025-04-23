@@ -10,10 +10,10 @@ services:
       wordpress:
         condition: service_healthy
     env_file:
-      - .env
+      - /home/cpoulain/.env_inception
     ports:
-      - "4000:80"
-      - "4043:443"
+      - "80:80"
+      - "443:443"
     restart: always
     networks:
       - Inception
@@ -34,7 +34,7 @@ services:
       mariadb:
         condition: service_healthy
     env_file:
-      - .env
+      - /home/cpoulain/.env_inception
     restart: always
     networks:
       - Inception
@@ -52,7 +52,7 @@ services:
     build:
       context: ./requirements/mariadb
     env_file:
-      - .env
+      - /home/cpoulain/.env_inception
     restart: always
     networks:
       - Inception
@@ -67,14 +67,14 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ../data/mysql
+      device: /home/cpoulain/data/mysql
       o: bind
 
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ../data/wordpress
+      device: /home/cpoulain/data/wordpress
       o: bind
 
 networks:
