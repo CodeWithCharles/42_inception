@@ -6,7 +6,7 @@
 #    By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/18 15:03:20 by cpoulain          #+#    #+#              #
-#    Updated: 2025/07/03 05:30:45 by cpoulain         ###   ########.fr        #
+#    Updated: 2025/07/03 06:14:01 by cpoulain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ENV_FILE	:=	--env-file /home/cpoulain/.env_inception
 all: $(NAME)
 
 $(NAME):
-	@mkdir -p $(DATA_DIR)/wordpress $(DATA_DIR)/mysql
+	@mkdir -p $(DATA_DIR)/wordpress $(DATA_DIR)/mysql $(DATA_DIR)/portainer
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) up -d --build
 
 down:
@@ -40,5 +40,7 @@ logs:
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs wordpress
 	@echo "\n---------- NGINX ------------\n"
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs nginx
+	@echo "\n-------- PORTAINER ----------\n"
+	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs portainer
 
 .PHONY: all down clean fclean re logs
