@@ -38,7 +38,9 @@ logs:
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs mariadb
 	@echo "\n-------- WORDPRESS ----------\n"
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs wordpress
-	@echo "\n---------- NGINX ------------\n"
-	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs nginx
+       @echo "\n---------- NGINX ------------\n"
+       @docker-compose $(ENV_FILE) -f $(COMPOSE) logs nginx
+       @echo "\n-------- PORTAINER ---------\n"
+       @docker-compose $(ENV_FILE) -f $(COMPOSE) logs portainer
 
 .PHONY: all down clean fclean re logs
