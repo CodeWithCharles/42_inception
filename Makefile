@@ -6,7 +6,7 @@
 #    By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/18 15:03:20 by cpoulain          #+#    #+#              #
-#    Updated: 2025/04/22 07:45:37 by cpoulain         ###   ########.fr        #
+#    Updated: 2025/07/03 05:30:45 by cpoulain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,7 @@ logs:
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs mariadb
 	@echo "\n-------- WORDPRESS ----------\n"
 	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs wordpress
-       @echo "\n---------- NGINX ------------\n"
-       @docker-compose $(ENV_FILE) -f $(COMPOSE) logs nginx
-       @echo "\n-------- PORTAINER ---------\n"
-       @docker-compose $(ENV_FILE) -f $(COMPOSE) logs portainer
+	@echo "\n---------- NGINX ------------\n"
+	@docker-compose $(ENV_FILE) -f $(COMPOSE) logs nginx
 
 .PHONY: all down clean fclean re logs
