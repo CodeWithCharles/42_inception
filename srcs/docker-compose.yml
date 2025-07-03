@@ -99,6 +99,18 @@ services:
     networks:
       - Inception
 
+  portainer:
+    container_name: portainer
+    build:
+      context: ./requirements/bonus/portainer
+    volumes:
+      - portainer:/data
+    ports:
+      - "9000:9000"
+    restart: always
+    networks:
+      - Inception
+
 volumes:
   mariadb:
     driver: local
@@ -112,6 +124,13 @@ volumes:
     driver_opts:
       type: none
       device: /home/cpoulain/data/wordpress
+      o: bind
+
+  portainer:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/cpoulain/data/portainer
       o: bind
 
 networks:
